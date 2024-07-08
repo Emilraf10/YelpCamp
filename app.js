@@ -136,7 +136,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
-})
+});
 
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundRoute);
@@ -146,19 +146,19 @@ app.use('/campgrounds/:id/reviews', reviewRoute); //En este caso, tenemos el id 
 
 app.get('/', (req, res) => {
     res.render("home");
-})
+});
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('PAGE NOT FOUND', 404));
-})
+});
 
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     if(!err.message) err.message = 'Something went wrong';
     res.status(statusCode).render('error', {err});
-})
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Serving on port ${PORT}`);
-})
+});
