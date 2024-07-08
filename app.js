@@ -25,7 +25,7 @@ const userRoutes = require('./routes/users');
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
 
-// 
+//  
 
 mongoose.connect(dbUrl) //Aqui conectamos a nuestra base de datos y definimos el nombre que tendra.
     .then(() => {
